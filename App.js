@@ -27,7 +27,7 @@ export default class gWinch extends Component{
     return(
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          hsgfehjgfeh
+          Teste
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.js
