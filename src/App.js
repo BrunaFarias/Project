@@ -7,20 +7,37 @@ import {
         View
       } from 'react-native';
 import {StackNavigator} from 'react-navigation';
+import { Navigator } from 'react-native-deprecated-custom-components';
 import LoginScreen from './screens/LoginScreen';
+import LoginRegistred from './screens/LoginRegistred';
+import Registro from './screens/Registro';
 
 export default class gWinch extends React.Component{
   render(){
     return(
-      <AppStackNavigator/>
-    );
+      <Navigator
+				initialRoute={{ id: 'a' }}
+				renderScene={(route, navigator) => {
+					/* definir a cena com base na rota */
+					if (route.id === 'a') {
+						//exibir a LoginScreen
+						return (<LoginScreen navigator={navigator} />);
+					}
+
+					if (route.id === 'b') {
+						//exibir a LoginRegistred
+						return (<LoginRegistred />);
+          }
+          if (route.id === 'c'){
+            //exibe a tela de registro
+            return(<Registro />);
+          }
+        }}/>    
+      );
   }
 }
 
-const AppStackNavigator = StackNavigator({
-  LoginScreen: {screen: LoginScreen}
-  
-})
+
 
 const styles = StyleSheet.create({
   container:{

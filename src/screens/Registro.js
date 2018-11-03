@@ -24,7 +24,7 @@ import * as Animatable from 'react-native-animatable'
 
 
 
-class LoginScreen extends React.Component {
+class Registro extends React.Component {
 
     _navigate(){
 		this.props.navigator.push({
@@ -49,7 +49,7 @@ class LoginScreen extends React.Component {
                       position: 'absolute',
                       height: 60, width: 60,
                       top: 60,
-                      left: 25,
+                      left: 25,     
                       zIndex: 100,
 
                   }}
@@ -81,14 +81,13 @@ class LoginScreen extends React.Component {
                         }}>
             <View style={styles.buttonStyle}>
                 {/**Button entrar**/}
-                <TouchableOpacity
-                    onPress={() => {
-                        this.props.navigator.push({ id: 'b' });}}>
+                <TouchableOpacity 
+                    onPress={this.onPress}>
                         <Image source={require('../imgs/buttons/btn_entrar.png')}
                             style={{
                                     width:150,
                                     height:150,
-                                    resizeMode:'contain',
+                                    resizeMode:'contain',   
                                 }}
                         />
                 </TouchableOpacity>
@@ -103,7 +102,7 @@ class LoginScreen extends React.Component {
                                     resizeMode:'contain',
                                 }}
                         />
-                </TouchableOpacity>
+                </TouchableOpacity>s
             </View>  
                 </Animated.View> 
             </Animatable.View>
@@ -112,7 +111,7 @@ class LoginScreen extends React.Component {
       );
   }
 }
-export default LoginScreen;
+export default Registro;
 
 const styles = StyleSheet.create({
   container: {
