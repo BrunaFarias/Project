@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
 import {
         Platform,
@@ -46,5 +47,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-AppRegistry.registerComponent('gWinch', () => gWinch);

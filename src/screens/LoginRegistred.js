@@ -14,7 +14,7 @@ import {
   Button,
   Navigator
 }from "react-native";
-
+//ewbfhdsgf
 const SCREEN_HEIGHT = Dimensions.get('window').height
 
 export default class LoginRegistred extends Component {
