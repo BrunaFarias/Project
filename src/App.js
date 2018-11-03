@@ -25,7 +25,7 @@ export default class gWinch extends React.Component{
 					}
 
 					if (route.id === 'b') {
-						//exibir a LoginRegistred
+						//exibir a LoginRegistred para registrar login
 						return (<LoginRegistred />);
           }
           if (route.id === 'c'){

@@ -112,7 +112,7 @@ class Registro extends React.Component {
   }
 }
 export default Registro;
-
+//styles
 const styles = StyleSheet.create({
   container: {
       flex: 1,

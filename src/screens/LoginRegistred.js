@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   cabecalho: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    
+    //teste
     flexGrow: 1,
 
     //margin: 20,

@@ -80,7 +80,7 @@ class LoginScreen extends React.Component {
                             
                         }}>
             <View style={styles.buttonStyle}>
-                {/**Button entrar**/}
+                {/**Button entrar no login**/}
                 <TouchableOpacity
                     onPress={() => {
                         this.props.navigator.push({ id: 'b' });}}>
