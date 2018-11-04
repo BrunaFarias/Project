@@ -22,79 +22,145 @@ export default class LoginRegistred extends Component {
     super(props);
     
     this.state = {
-      username: '',
+      email_or_tel: '',
       password: '',
     };
   }
   
   onLogin() {
-    const { username, password } = this.state;
+    const { email_or_tel, password } = this.state;
 
-    Alert.alert('Credentials', `${username} + ${password}`);
+    Alert.alert('Credentials', `${email_or_tel} + ${password}`);
   }
 
   render() {
     return (
       <View style={styles.container}>
-
-        <View style={styles.cabecalho}>
-         <Image source={require('../imgs/buttons/btn_voltar.png')}  />
-         <Text style={styles.txtLogin}>Login</Text>
-        </View>
-        <TextInput
-          value={this.state.username}
-          onChangeText={(username) => this.setState({ username })}
-          placeholder={'Username'}
-          style={styles.input}
-        />
-        <TextInput
-          value={this.state.password}
-          onChangeText={(password) => this.setState({ password })}
-          placeholder={'Password'}
-          secureTextEntry={true}
-          style={styles.input}
-        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={()=>
+            this.props.navigator.push({id: 'a'})}>
+            <Image source={require('../imgs/buttons/btn_back2.png')} 
+                  style={styles.buttonBack} 
+            />
+            <Text style={styles.txtRegistro}>Entrar</Text>
+        </TouchableOpacity>
         
-        <Button
-          title={'Login'}
-          style={styles.input}
-          onPress={this.onLogin.bind(this)}
-        />
-      </View>
-    );
+        <View style={[styles.countContainer]}>
+          <Text style={[styles.countText]}>
+             { this.state.count !== 0 ? this.state.count: null}
+           </Text>
+         </View>
+         <View style={styles.buttonStyle}>
+            {/**Button de registro com o face**/}
+            <TouchableOpacity
+                       onPress={() => {
+                           this.props.navigator.push({ id: 'b' });}}>
+                           <Image source={require('../imgs/buttons/btn_Facebook.png')}
+                               style={{
+                                       width:150,
+                                       height:150,
+                                       resizeMode:'contain',
+                                   }}
+                           />
+                   </TouchableOpacity>
+                   {/**Button de registro com o google**/}
+                   <TouchableOpacity 
+                       onPress={() => {
+                       this.props.navigator.push({ id: 'c' });}}>
+                           <Image source={require('../imgs/buttons/btn_Google.png')}
+                               style={{
+                                       width:150,
+                                       height:150,
+                                       resizeMode:'contain',
+                                   }}/>
+                   </TouchableOpacity>
+              </View>
+            <View>
+                <View style={{flexDirection:"row"}}>
+                    <View style={{flex:1}}>
+                    <TextInput
+                      value={this.state.email_or_tel}
+                      onChangeText={(email_or_tel) => this.setState({ email_or_tel })}
+                      placeholder={'Email ou Telefone'}
+                      style={styles.input}
+                    />
+                    </View>
+                    <View style={{flex:1}}>
+                    <TextInput
+                      value={this.state.password}
+                      onChangeText={(password) => this.setState({ password })}
+                      placeholder={'Senha'}
+                      secureTextEntry={true}
+                      style={styles.input}
+                    />
+                    </View>
+                </View>
+            </View>
+
+            <View style={styles.buttonEntrar}>
+            {/**Button de registro com o face**/}
+            <TouchableOpacity
+                       onPress={() => {
+                           this.props.navigator.push({ id: 'b' });}}>
+                           <Image source={require('../imgs/buttons/btn_entrar2.png')}
+                               style={{
+                                       width:250,
+                                       height:250,
+                                       resizeMode:'contain',
+                                   }}
+                           />
+                   </TouchableOpacity>
+            </View>
+
+       </View>
+     )
   }
 }
 
 const styles = StyleSheet.create({
-  container : {
+  container: {
     flexGrow: 1,
-    justifyContent:'center',
-    alignItems: 'center'
+    paddingHorizontal: 0,
+   
   },
-  input: {
-    width:300,
-    backgroundColor:'rgba(255, 255,255,0.2)',
-    borderRadius: 25,
-    paddingHorizontal:16,
-    fontSize:16,
-    color:'#ffffff',
-    marginVertical: 10
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#99b3ff',
+    padding: 10,
+    flexDirection: 'row', 
+    
   },
-  cabecalho: {
+  countContainer: {
+    alignItems: 'center',
+    padding: 10
+  },
+  
+  countText: {
+    color: '#FF00FF'
+  },
+
+  txtRegistro: {
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
+    
+  },
+  buttonBack:{
+    resizeMode:'contain',
+  },
+  buttonStyle:{
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+
+  buttonEntrar:{
+    margin: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    //teste
-    flexGrow: 1,
-
-    //margin: 20,
-    backgroundColor:'#8f9ec1', 
-    padding:30,
-  },
-  txtLogin: {
-    fontSize: 40,
-    color: 'white',
-    marginHorizontal: 10,
-    
-    fontFamily:'Ariel'
-  }
-});
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+  
+})

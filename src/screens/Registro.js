@@ -26,104 +26,162 @@ import * as Animatable from 'react-native-animatable'
 
 class Registro extends React.Component {
 
-    _navigate(){
+  _navigate(){
 		this.props.navigator.push({
-			name: 'Registro', // Matches route.name
+			name: 'LoginScreen', // Matches route.name
 		})
 	}
 
-  static navigationOptions = {
-      header: null
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      name: '',
+      lastname: '',
+      email: '',
+      telefone: '',
+      password: '',
+    };
   }
+  
+  onLogin() {
+    const { name, lastname, email, telefone, password } = this.state;
 
-  constructor() {
-      super()
+    Alert.alert('Credentials', `${name} + ${lastname} + ${email} + ${telefone} + ${password}`);
   }
 
   render() {
     
-      return (
-          <View style={{ flex: 1 }}>
-              <Animated.View
-                  style={{
-                      position: 'absolute',
-                      height: 60, width: 60,
-                      top: 60,
-                      left: 25,     
-                      zIndex: 100,
-
-                  }}
-              >  
-              </Animated.View>
-              <ImageBackground
-                  source={require('../imgs/login_bg.jpg')}
-                  style={{ flex: 1 }}
-              >
-                  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                      <Animatable.View
-                          animation="zoomIn" iterationCount={1}
-                          style={{ height: 100, width: 100, alignItems: 'center', justifyContent: 'center' }}>
-                          <Image
-                                source={require('../imgs/icon.png')}
-                                style={{ height: 100, width: 100, alignItems: 'center', justifyContent: 'center'}}/>
-                      </Animatable.View>
-                      <Text style={{ fontWeight: 'bold', fontSize: 26 }}>GWINCH</Text>
-                  </View>
-                </ImageBackground>
-                  
-            {/**Parte branca**/}
-            <Animatable.View animation="slideInUp" interationCount={1}>
-                  <Animated.View
-                    style={{
-                            height: 170,
-                            backgroundColor: 'white',
-                            
-                        }}>
-            <View style={styles.buttonStyle}>
-                {/**Button entrar**/}
-                <TouchableOpacity 
-                    onPress={this.onPress}>
-                        <Image source={require('../imgs/buttons/btn_entrar.png')}
-                            style={{
-                                    width:150,
-                                    height:150,
-                                    resizeMode:'contain',   
-                                }}
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={()=>
+            this.props.navigator.push({id: 'a'})}>
+          <Image source={require('../imgs/buttons/btn_voltar.png')} 
+                style={{
+                  width:30,
+                  height:30,
+                  resizeMode:'contain',}} 
+          />
+          <Text style={styles.txtRegistro}>Registro</Text>
+        </TouchableOpacity>
+        <View style={[styles.countContainer]}>
+          <Text style={[styles.countText]}>
+             { this.state.count !== 0 ? this.state.count: null}
+           </Text>
+         </View>
+         <View style={styles.buttonStyle}>
+            {/**Button de registro com o face**/}
+            <TouchableOpacity
+                       onPress={() => {
+                           this.props.navigator.push({ id: 'b' });}}>
+                           <Image source={require('../imgs/buttons/btn_Facebook2.png')}
+                               style={{
+                                       width:150,
+                                       height:150,
+                                       resizeMode:'contain',
+                                   }}
+                           />
+                   </TouchableOpacity>
+                   {/**Button de registro com o google**/}
+                   <TouchableOpacity 
+                       onPress={() => {
+                       this.props.navigator.push({ id: 'c' });}}>
+                           <Image source={require('../imgs/buttons/btn_Google2.png')}
+                               style={{
+                                       width:150,
+                                       height:150,
+                                       resizeMode:'contain',
+                                   }}/>
+                   </TouchableOpacity>
+              </View>
+            <View>
+                <View style={{flexDirection:"row"}}>
+                    <View style={{flex:1}}>
+                    <TextInput
+                      value={this.state.name}
+                      onChangeText={(name) => this.setState({ name })}
+                      placeholder={'Nome'}
+                      style={styles.input}
+                    />
+                    </View>
+                    <View style={{flex:1}}>
+                    <TextInput
+                      value={this.state.lastname}
+                      onChangeText={(lastname) => this.setState({ lastname })}
+                      placeholder={'Sobrenome'}
+                      secureTextEntry={true}
+                      style={styles.input}
+                    />
+                    </View>
+                </View>
+                <View style={{flexDirection:"row"}}>
+                    <View style={{flex:1}}>
+                        <Image
+                            source={require('../imgs/brasil.jpg')}
+                            style={{ height: 24, width: 24, resizeMode: 'contain' }}
                         />
-                </TouchableOpacity>
-                {/**Button de registro**/}
-                <TouchableOpacity 
-                    onPress={() => {
-                    this.props.navigator.push({ id: 'c' });}}>
-                        <Image source={require('../imgs/buttons/btn_registro.png')}
-                            style={{
-                                    width:150,
-                                    height:150,
-                                    resizeMode:'contain',
-                                }}
-                        />
-                </TouchableOpacity>s
-            </View>  
-                </Animated.View> 
-            </Animatable.View>
                         
+                        <Text style={{
+                          fontSize: 20,
+                          paddingHorizontal: 10
+                        }}>+55</Text>
+                    </View>
+                    <View style={{flex:1}}>
+                    <TextInput
+                      value={this.state.telefone}
+                      onChangeText={(telefone) => this.setState({ telefone })}
+                      placeholder={'Telefone'}
+                      secureTextEntry={true}
+                      style={styles.input}
+                    />
+                    </View>
+                </View>
             </View>
-      );
-  }
+
+       </View>
+     )
+   }
 }
 export default Registro;
-//styleseehdew
+
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      justifyContent: 'center',
-      paddingHorizontal:20,
+    flexGrow: 1,
+    paddingHorizontal: 0,
+   
   },
-buttonStyle:{
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#99b3ff',
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+    
+  },
+  countContainer: {
+    alignItems: 'center',
+    padding: 10
+  },
+  
+  countText: {
+    color: '#FF00FF'
+  },
+
+  txtRegistro: {
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
+    marginHorizontal: 10,
+  },
+  buttonStyle:{
     margin: 20,
     flexDirection: 'row',
     justifyContent: 'space-between'
 
 }
-});
+  
+})
 
+  
