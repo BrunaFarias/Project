@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, {Component} from 'react';
 import {
         Platform,
@@ -39,7 +38,6 @@ export default class gWinch extends React.Component{
 }
 
 
-
 const styles = StyleSheet.create({
   container:{
     flex:1,
@@ -47,3 +45,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+AppRegistry.registerComponent('gWinch', () => gWinch);
