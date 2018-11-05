@@ -58,24 +58,18 @@ class Registro extends React.Component {
           style={styles.button}
           onPress={()=>
             this.props.navigator.push({id: 'a'})}>
-          <Image source={require('../imgs/buttons/btn_voltar.png')} 
-                style={{
-                  width:30,
-                  height:30,
-                  resizeMode:'contain',}} 
-          />
-          <Text style={styles.txtRegistro}>Registro</Text>
+            <Image source={require('../imgs/buttons/btn_back2.png')} 
+                  style={styles.buttonBack} 
+            />
+            <Text style={styles.txtRegistro}>Entrar</Text>
         </TouchableOpacity>
         <View style={[styles.countContainer]}>
-          <Text style={[styles.countText]}>
-             { this.state.count !== 0 ? this.state.count: null}
-           </Text>
          </View>
          <View style={styles.buttonStyle}>
             {/**Button de registro com o face**/}
             <TouchableOpacity
                        onPress={() => {
-                           this.props.navigator.push({ id: 'b' });}}>
+                           this.props.navigator.push({ id: 'a' });}}>
                            <Image source={require('../imgs/buttons/btn_Facebook2.png')}
                                style={{
                                        width:150,
@@ -116,28 +110,63 @@ class Registro extends React.Component {
                     />
                     </View>
                 </View>
+                 
+                <View>
                 <View style={{flexDirection:"row"}}>
                     <View style={{flex:1}}>
-                        <Image
-                            source={require('../imgs/brasil.jpg')}
-                            style={{ height: 24, width: 24, resizeMode: 'contain' }}
-                        />
-                        
-                        <Text style={{
-                          fontSize: 20,
-                          paddingHorizontal: 10
-                        }}>+55</Text>
-                    </View>
-                    <View style={{flex:1}}>
                     <TextInput
-                      value={this.state.telefone}
-                      onChangeText={(telefone) => this.setState({ telefone })}
-                      placeholder={'Telefone'}
-                      secureTextEntry={true}
-                      style={styles.input}
+                       value={this.state.email}
+                       onChangeText={(email) => this.setState({ email })}
+                       placeholder={'Email'}
+                       style={styles.input}
                     />
                     </View>
                 </View>
+                <View style={{flexDirection:"row"}}>
+                    <View style={{flex:1}}>
+                    <Text style={{
+                          fontSize: 15,
+                          paddingHorizontal: 10
+                        }}>Telefone</Text>
+                    </View>
+              </View>
+              <View style={{flexDirection:"row"}}>
+                
+                <Image
+                    source={require('../imgs/brasil.jpg')}
+                    style={{ height: 24, width: 24, resizeMode: 'contain' }}
+                />
+                <Text style={{
+                    fontSize: 15,
+                    paddingHorizontal: 10
+                    }}>+55
+                </Text>
+
+                <View style={{flex:1}}>
+                    <TextInput
+                       value={this.state.telefone}
+                       onChangeText={(telefone) => this.setState({ telefone })}
+                       placeholder={'9299999-9999'}
+                       secureTextEntry={true}
+                       style={styles.input}
+                    />
+                    </View>
+              </View>
+            </View>
+            <View style={styles.buttonEntrar}>
+            {/**Button de registro com o face**/}
+            <TouchableOpacity
+                       onPress={() => {
+                           this.props.navigator.push({ id: 'b' });}}>
+                           <Image source={require('../imgs/buttons/btn_Prosseguir.png')}
+                               style={{
+                                       width:250,
+                                       height:250,
+                                       resizeMode:'contain',
+                                   }}
+                           />
+                   </TouchableOpacity>
+            </View>
             </View>
 
        </View>
@@ -156,15 +185,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#99b3ff',
     padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    flexDirection: 'row', 
     
   },
   countContainer: {
     alignItems: 'center',
     padding: 10
   },
-  
+  itemInput: {
+    marginTop: 10,
+    justifyContent: 'space-between',
+    flex: 1,
+    flexDirection: 'row'
+},
   countText: {
     color: '#FF00FF'
   },
@@ -173,14 +206,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     color: 'white',
-    marginHorizontal: 10,
+    
+  },
+  buttonBack:{
+    resizeMode:'contain',
   },
   buttonStyle:{
     margin: 20,
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
 
-}
+  buttonEntrar:{
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
   
 })
 
